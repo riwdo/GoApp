@@ -15,20 +15,20 @@ public class RestClient {
 
     private static RestClient instance = null;
 
-    public static RestClient getInstance(){
-        if(instance == null){
+    public static RestClient getInstance() {
+        if (instance == null) {
             instance = new RestClient();
         }
         return instance;
 
     }
 
-    public RestClient(){
+    public RestClient() {
         client = new AsyncHttpClient();
     }
 
 
-    public void addHeader(String header, String value){
+    public void addHeader(String header, String value) {
         client.addHeader(header, value);
     }
 
@@ -41,7 +41,7 @@ public class RestClient {
         client.post(getAbsoluteUrl(url), params, responseHandler);
     }
 
-    public AsyncHttpClient getClient(){
+    public AsyncHttpClient getClient() {
         return client;
     }
 

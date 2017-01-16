@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
         authorize.newAsyncHTTP();
 
+        authorize.getLocation();
 
 
     }
