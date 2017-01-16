@@ -18,14 +18,14 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
+
 import javax.net.ssl.HttpsURLConnection;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView totalTextView;
-    EditText percentageTxt;
-    EditText numberTxt;
+    TextView dataTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +34,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        totalTextView = (TextView) findViewById(R.id.totalTextView);
-        percentageTxt = (EditText) findViewById(R.id.percentageTxt);
-        numberTxt = (EditText) findViewById(R.id.numberTxt);
+        dataTxt = (TextView) findViewById(R.id.dataTxt);
 
         Button calcBtn = (Button) findViewById(R.id.calcBtn);
         calcBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                float percentage = Float.parseFloat(percentageTxt.getText().toString());
-                float decimal = percentage / 100;
                 Log.d("Button", "button here");
                 try {
                     Log.d("try", "try/catch");
@@ -52,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                float total = decimal * Float.parseFloat(numberTxt.getText().toString());
-                totalTextView.setText(Float.toString(total));
             }
         });
 
@@ -83,12 +76,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void sendGet() throws Exception{
+    private void sendGet() throws ExecutionException, InterruptedException {
 
         Log.d("sendGet", "send/get");
-        String url = "https://api.vasttrafik.se/bin/rest.exe/v2/location.name?input=ols&format=json";
+        String url = "http://www.google.com/search?q=mkyong";
+        Authorize authorize = new Authorize();
 
-        new RetrieveData().execute(url);
+        authorize.newAsyncHTTP();
+
 
 
     }
